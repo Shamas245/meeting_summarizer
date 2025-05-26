@@ -43,13 +43,13 @@ class MeetingSummarizer:
         self.initialize_models()
 
     def load_environment(self):
-    """Load and validate environment variables"""
+        """Load and validate environment variables"""
     # Use Streamlit secrets instead of dotenv
-    try:
-        self.gemini_api_key = st.secrets["GEMINI_API_KEY"]
-    except KeyError:
-        st.error("❌ GEMINI_API_KEY not found in Streamlit secrets.")
-        st.stop()
+        try:
+            self.gemini_api_key = st.secrets["GEMINI_API_KEY"]
+        except KeyError:
+            st.error("❌ GEMINI_API_KEY not found in Streamlit secrets.")
+            st.stop()
             
     def initialize_models(self):
         """Initialize ML models with error handling"""
