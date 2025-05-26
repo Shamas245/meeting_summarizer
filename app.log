@@ -93,3 +93,13 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified
 2025-05-26 21:26:19,665 - INFO - Whisper model 'tiny.en' loaded successfully
 2025-05-26 21:26:19,668 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
 2025-05-26 21:26:20,529 - INFO - Slack message sent successfully
+2025-05-26 21:57:24,130 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:57:24,136 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:58:54,502 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:58:54,509 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 22:00:06,126 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 22:00:06,140 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 22:05:58,881 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 22:05:58,886 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 22:17:57,520 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 22:17:57,523 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
