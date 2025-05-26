@@ -90,3 +90,6 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified
 2025-05-26 21:25:30,390 - INFO - Generating action items...
 2025-05-26 21:25:31,087 - INFO - Generated summary and 1 action items
 2025-05-26 21:25:31,395 - INFO - DOCX document created successfully
+2025-05-26 21:26:19,665 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:26:19,668 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:26:20,529 - INFO - Slack message sent successfully
