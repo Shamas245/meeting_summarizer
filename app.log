@@ -1,0 +1,92 @@
+2025-05-23 20:33:01,067 - WARNING - C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\__init__.py:150: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(fp, map_location=device)
+
+2025-05-23 20:33:01,666 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 20:33:01,666 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 20:33:15,551 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 20:33:15,552 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 20:33:25,677 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 20:33:25,677 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 20:33:38,862 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 20:33:38,863 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 20:33:38,875 - INFO - Processing video: C:\Users\Hp\AppData\Local\Temp\tmpkn28bi9j.mp4
+2025-05-23 20:33:39,508 - INFO - Audio extracted successfully: C:\Users\Hp\AppData\Local\Temp\tmps4ffo8mj.wav
+2025-05-23 20:33:39,509 - INFO - Transcribing audio: C:\Users\Hp\AppData\Local\Temp\tmps4ffo8mj.wav
+2025-05-23 20:33:40,512 - WARNING - C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\transcribe.py:126: UserWarning: FP16 is not supported on CPU; using FP32 instead
+  warnings.warn("FP16 is not supported on CPU; using FP32 instead")
+
+2025-05-23 20:33:40,540 - ERROR - Transcription error: [WinError 2] The system cannot find the file specified
+2025-05-23 20:33:40,571 - ERROR - Processing error: Traceback (most recent call last):
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 357, in process_meeting
+    st.session_state.transcript = summarizer.transcribe_audio(audio_path)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 140, in transcribe_audio
+    result = self.stt_model.transcribe(audio_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\transcribe.py", line 133, in transcribe
+    mel = log_mel_spectrogram(audio, model.dims.n_mels, padding=N_SAMPLES)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\audio.py", line 140, in log_mel_spectrogram
+    audio = load_audio(audio)
+            ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\audio.py", line 58, in load_audio
+    out = run(cmd, capture_output=True, check=True).stdout
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+2025-05-23 21:20:56,647 - WARNING - C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\__init__.py:150: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(fp, map_location=device)
+
+2025-05-23 21:20:58,128 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 21:20:58,140 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 21:21:19,258 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 21:21:19,262 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 21:21:23,154 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 21:21:23,156 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 21:21:23,185 - INFO - Processing video: C:\Users\Hp\AppData\Local\Temp\tmp97brewis.mp4
+2025-05-23 21:21:24,468 - INFO - Audio extracted successfully: C:\Users\Hp\AppData\Local\Temp\tmpaw73yok_.wav
+2025-05-23 21:21:24,469 - INFO - Transcribing audio: C:\Users\Hp\AppData\Local\Temp\tmpaw73yok_.wav
+2025-05-23 21:22:18,326 - WARNING - C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\transcribe.py:126: UserWarning: FP16 is not supported on CPU; using FP32 instead
+  warnings.warn("FP16 is not supported on CPU; using FP32 instead")
+
+2025-05-23 21:22:23,455 - INFO - Transcription completed successfully
+2025-05-23 21:22:23,460 - INFO - Generating summary for general meeting...
+2025-05-23 21:22:27,591 - INFO - Generating action items...
+2025-05-23 21:22:28,692 - INFO - Generated summary and 3 action items
+2025-05-23 21:22:28,900 - INFO - DOCX document created successfully
+2025-05-23 21:24:28,291 - WARNING - C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\__init__.py:150: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(fp, map_location=device)
+
+2025-05-23 21:24:29,466 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 21:24:29,468 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 21:24:34,068 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-23 21:24:34,070 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-23 21:24:35,137 - INFO - Slack message sent successfully
+2025-05-26 21:22:09,218 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:22:09,229 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:23:32,675 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:23:32,675 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:23:49,882 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:23:49,882 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:23:59,553 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:23:59,555 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:25:12,287 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:25:12,290 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:25:19,265 - INFO - Whisper model 'tiny.en' loaded successfully
+2025-05-26 21:25:19,265 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-26 21:25:19,301 - INFO - Processing video: C:\Users\Hp\AppData\Local\Temp\tmp1qmab_hj.mp4
+2025-05-26 21:25:23,521 - INFO - Audio extracted successfully: C:\Users\Hp\AppData\Local\Temp\tmpxef6zp0x.wav
+2025-05-26 21:25:23,522 - INFO - Transcribing audio: C:\Users\Hp\AppData\Local\Temp\tmpxef6zp0x.wav
+2025-05-26 21:25:26,355 - INFO - Transcription completed successfully
+2025-05-26 21:25:26,364 - INFO - Generating summary for general meeting...
+2025-05-26 21:25:30,390 - INFO - Generating action items...
+2025-05-26 21:25:31,087 - INFO - Generated summary and 1 action items
+2025-05-26 21:25:31,395 - INFO - DOCX document created successfully
