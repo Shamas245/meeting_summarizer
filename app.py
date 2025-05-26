@@ -45,12 +45,7 @@ class MeetingSummarizer:
     def load_environment(self):
         """Load and validate environment variables"""
         load_dotenv()
-        self.slack_webhook_url = os.getenv("SLACK_WEBHOOK_URL")
         self.gemini_api_key = os.getenv("GEMINI_API_KEY")
-        
-        if not self.slack_webhook_url:
-            st.error("❌ SLACK_WEBHOOK_URL not found in .env file.")
-            st.stop()
         if not self.gemini_api_key:
             st.error("❌ GEMINI_API_KEY not found in .env file.")
             st.stop()
@@ -462,10 +457,11 @@ def display_download_and_share_options(summarizer):
     with col2:
         if st.session_state.action_items:
             st.subheader("📤 Share")
-            
-            # Add Slack webhook validation
-            if not validate_webhook_url(summarizer.slack_webhook_url):
-                st.warning("⚠️ Slack webhook URL may be invalid. Please check your .env file.")
+            # Check if user provided webhook
+            if 'slack_webhook' not in st.session_state:
+                st.info("💡 Enter a Slack webhook URL above to enable Slack sharing")
+                st.button("📱 Send to Slack", disabled=True, use_container_width=True)
+                return
             
             if st.button("📱 Send to Slack", use_container_width=True):
                 try:
@@ -473,7 +469,7 @@ def display_download_and_share_options(summarizer):
                         success = send_to_slack(
                             summary=st.session_state.summary,
                             action_items="\n".join(st.session_state.action_items),
-                            webhook_url=summarizer.slack_webhook_url
+                            webhook_url=st.session_state['slack_webhook']
                         )
                     
                     if success:
@@ -563,7 +559,12 @@ def main():
     display_header()
     meeting_type = display_meeting_type_selector()
     uploaded_file, file_type = handle_file_uploads(summarizer)
-    
+    # Add Slack webhook input
+    slack_url = st.text_input("🔗 Enter Slack Webhook URL", 
+                            type="password", 
+                            help="Paste your Slack webhook URL to send results to Slack")
+    if slack_url:
+       st.session_state['slack_webhook'] = slack_url
     # Process button
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
