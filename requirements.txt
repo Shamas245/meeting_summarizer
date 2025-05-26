@@ -1,0 +1,10 @@
+streamlit
+python-dotenv
+openai-whisper
+google-generativeai
+moviepy
+python-docx
+librosa
+requests
+numpy
+scipy
