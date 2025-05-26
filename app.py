@@ -41,14 +41,15 @@ class MeetingSummarizer:
     def __init__(self):
         self.load_environment()
         self.initialize_models()
-        
+
     def load_environment(self):
-        """Load and validate environment variables"""
-        load_dotenv()
-        self.gemini_api_key = os.getenv("GEMINI_API_KEY")
-        if not self.gemini_api_key:
-            st.error("❌ GEMINI_API_KEY not found in .env file.")
-            st.stop()
+    """Load and validate environment variables"""
+    # Use Streamlit secrets instead of dotenv
+    try:
+        self.gemini_api_key = st.secrets["GEMINI_API_KEY"]
+    except KeyError:
+        st.error("❌ GEMINI_API_KEY not found in Streamlit secrets.")
+        st.stop()
             
     def initialize_models(self):
         """Initialize ML models with error handling"""
@@ -559,12 +560,32 @@ def main():
     display_header()
     meeting_type = display_meeting_type_selector()
     uploaded_file, file_type = handle_file_uploads(summarizer)
+    
     # Add Slack webhook input
-    slack_url = st.text_input("🔗 Enter Slack Webhook URL", 
+    slack_url = st.text_input("🔗 Slack Webhook URL", 
                             type="password", 
                             help="Paste your Slack webhook URL to send results to Slack")
+
+    # Add instructions expander right below the input
+    with st.expander("📘 How to get your Slack Webhook URL?"):
+        st.markdown("""
+        1. Go to [Slack API: Incoming Webhooks](https://api.slack.com/messaging/webhooks).
+        2. Click **Create Your Own App**.
+        3. Give your app a name (e.g., `MeetingBot`) and choose your workspace.
+        4. Under **Add features and functionality**, click **Incoming Webhooks**.
+        5. Activate **Incoming Webhooks**.
+        6. Scroll down and click **Add New Webhook to Workspace**.
+        7. Select a channel you want to post to.
+        8. Click **Allow**.
+        9. Copy the **Webhook URL** that looks like:
+        ```
+        https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+        ```
+        10. Paste it in the Slack Webhook field above.
+        """)
+
     if slack_url:
-       st.session_state['slack_webhook'] = slack_url
+        st.session_state['slack_webhook'] = slack_url
     # Process button
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
