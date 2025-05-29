@@ -105,3 +105,167 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified
 2025-05-26 22:17:57,523 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
 2025-05-26 23:24:21,976 - INFO - Whisper model 'tiny' loaded successfully
 2025-05-26 23:24:21,979 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:21:29,161 - WARNING - C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\__init__.py:150: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(fp, map_location=device)
+
+2025-05-27 02:21:30,177 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:21:30,177 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:21:56,071 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:21:56,073 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:23:25,117 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:23:25,119 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:23:32,927 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:23:32,927 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:23:37,454 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:23:37,454 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:23:37,483 - INFO - Processing video: C:\Users\Hp\AppData\Local\Temp\tmp9zm91f46.mp4
+2025-05-27 02:23:37,681 - ERROR - Audio extraction error: MoviePy error: failed to read the duration of file C:\Users\Hp\AppData\Local\Temp\tmp9zm91f46.mp4.
+Here are the file infos returned by ffmpeg:
+
+ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, matroska,webm, from 'C:\Users\Hp\AppData\Local\Temp\tmp9zm91f46.mp4':
+  Metadata:
+    encoder         : Chrome
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0(eng): Video: h264 (Constrained Baseline), yuv420p(tv, bt709, progressive), 1920x1020 [SAR 1:1 DAR 32:17], 30.30 fps, 60 tbr, 1k tbn (default)
+  Stream #0:1(eng): Audio: opus, 48000 Hz, mono, fltp (default)
+At least one output file must be specified
+
+2025-05-27 02:23:37,727 - ERROR - Processing error: Traceback (most recent call last):
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 286, in ffmpeg_parse_infos
+    match = re.findall("([0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9])", line)[0]
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 341, in process_meeting
+    tmp_video_path, tmp_audio_path = summarizer.extract_audio_from_video(uploaded_file)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 97, in extract_audio_from_video
+    video = VideoFileClip(tmp_video_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 289, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: failed to read the duration of file %s.\n"
+OSError: MoviePy error: failed to read the duration of file C:\Users\Hp\AppData\Local\Temp\tmp9zm91f46.mp4.
+Here are the file infos returned by ffmpeg:
+
+ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, matroska,webm, from 'C:\Users\Hp\AppData\Local\Temp\tmp9zm91f46.mp4':
+  Metadata:
+    encoder         : Chrome
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0(eng): Video: h264 (Constrained Baseline), yuv420p(tv, bt709, progressive), 1920x1020 [SAR 1:1 DAR 32:17], 30.30 fps, 60 tbr, 1k tbn (default)
+  Stream #0:1(eng): Audio: opus, 48000 Hz, mono, fltp (default)
+At least one output file must be specified
+
+
+2025-05-27 02:32:14,421 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:32:14,421 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:32:26,105 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:32:26,105 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:32:30,217 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-27 02:32:30,219 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-27 02:32:30,242 - INFO - Processing video: C:\Users\Hp\AppData\Local\Temp\tmpg0iwf52_.mp4
+2025-05-27 02:32:30,419 - ERROR - Audio extraction error: MoviePy error: failed to read the duration of file C:\Users\Hp\AppData\Local\Temp\tmpg0iwf52_.mp4.
+Here are the file infos returned by ffmpeg:
+
+ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, matroska,webm, from 'C:\Users\Hp\AppData\Local\Temp\tmpg0iwf52_.mp4':
+  Metadata:
+    encoder         : Chrome
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0(eng): Video: h264 (Constrained Baseline), yuv420p(tv, bt709, progressive), 1920x1020 [SAR 1:1 DAR 32:17], 30.30 fps, 60 tbr, 1k tbn (default)
+  Stream #0:1(eng): Audio: opus, 48000 Hz, mono, fltp (default)
+At least one output file must be specified
+
+2025-05-27 02:32:30,432 - ERROR - Processing error: Traceback (most recent call last):
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 286, in ffmpeg_parse_infos
+    match = re.findall("([0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9])", line)[0]
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 341, in process_meeting
+    tmp_video_path, tmp_audio_path = summarizer.extract_audio_from_video(uploaded_file)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 97, in extract_audio_from_video
+    video = VideoFileClip(tmp_video_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 289, in ffmpeg_parse_infos
+    raise IOError(("MoviePy error: failed to read the duration of file %s.\n"
+OSError: MoviePy error: failed to read the duration of file C:\Users\Hp\AppData\Local\Temp\tmpg0iwf52_.mp4.
+Here are the file infos returned by ffmpeg:
+
+ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.100 / 61. 19.100
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, matroska,webm, from 'C:\Users\Hp\AppData\Local\Temp\tmpg0iwf52_.mp4':
+  Metadata:
+    encoder         : Chrome
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0(eng): Video: h264 (Constrained Baseline), yuv420p(tv, bt709, progressive), 1920x1020 [SAR 1:1 DAR 32:17], 30.30 fps, 60 tbr, 1k tbn (default)
+  Stream #0:1(eng): Audio: opus, 48000 Hz, mono, fltp (default)
+At least one output file must be specified
+
+
+2025-05-29 11:58:48,332 - WARNING - C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\whisper\__init__.py:150: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(fp, map_location=device)
+
+2025-05-29 11:58:48,832 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-29 11:58:48,832 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-29 11:59:29,694 - INFO - Whisper model 'tiny' loaded successfully
+2025-05-29 11:59:29,694 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully

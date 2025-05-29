@@ -2,7 +2,7 @@
 # Contains prompts and settings for AI models
 
 # Model Configuration
-WHISPER_MODEL = "tiny"  # Options: tiny.en, base.en, small.en, medium.en, large
+WHISPER_MODEL = "base"  # Options: tiny.en, base.en, small.en, medium.en, large
 GEMINI_MODEL = "gemini-1.5-flash"  # Gemini model version
 MAX_FILE_SIZE_MB = 100  # Maximum file size in MB
 MAX_TRANSCRIPT_LENGTH = 50000  # Maximum transcript length in characters
