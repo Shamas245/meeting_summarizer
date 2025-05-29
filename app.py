@@ -5,7 +5,7 @@ import tempfile
 import time
 from datetime import datetime
 from pathlib import Path
-import whisper
+from faster_whisper import WhisperModel
 import google.generativeai as genai
 from moviepy.editor import VideoFileClip
 from docx import Document
@@ -50,28 +50,34 @@ class MeetingSummarizer:
             st.error("❌ GEMINI_API_KEY not found in Streamlit secrets.")
             st.stop()
             
-    def initialize_models(self):
-        """Initialize ML models with error handling"""
-        # Initialize Whisper model
-        try:
-            with st.spinner("Loading speech recognition model..."):
-                self.stt_model = whisper.load_model(WHISPER_MODEL)
-            logger.info(f"Whisper model '{WHISPER_MODEL}' loaded successfully")
-        except Exception as e:
-            st.error(f"❌ Failed to load Whisper model: {str(e)}")
-            logger.error(f"Whisper loading error: {e}")
-            st.stop()
+        def initialize_models(self):
+            """Initialize ML models with error handling"""
+        # Initialize Faster Whisper model
+            try:
+               with st.spinner("Loading speech recognition model..."):
+                    # Use CPU and int8 for better compatibility on Streamlit Cloud
+                self.stt_model = WhisperModel(
+                    WHISPER_MODEL, 
+                    device="cpu", 
+                    compute_type="int8",
+                    download_root=None  # Let it use default cache
+                    )
+                logger.info(f"Faster Whisper model '{WHISPER_MODEL}' loaded successfully")
+            except Exception as e:
+                st.error(f"❌ Failed to load Whisper model: {str(e)}")
+                logger.error(f"Whisper loading error: {e}")
+                st.stop()
 
-        # Initialize Gemini
-        try:
-            genai.configure(api_key=self.gemini_api_key)
-            self.gemini_model = genai.GenerativeModel(GEMINI_MODEL)
-            logger.info(f"Gemini model '{GEMINI_MODEL}' initialized successfully")
-        except Exception as e:
-            st.error(f"❌ Failed to initialize Gemini API: {str(e)}")
-            logger.error(f"Gemini init error: {e}")
-            st.stop()
-    
+            # Initialize Gemini (keep this part the same)
+            try:
+               genai.configure(api_key=self.gemini_api_key)
+               self.gemini_model = genai.GenerativeModel(GEMINI_MODEL)
+               logger.info(f"Gemini model '{GEMINI_MODEL}' initialized successfully")
+            except Exception as e:
+               st.error(f"❌ Failed to initialize Gemini API: {str(e)}")
+               logger.error(f"Gemini init error: {e}")
+               st.stop()
+                
     def validate_file_size(self, file, max_size_mb=MAX_FILE_SIZE_MB):
         """Validate file size"""
         max_size_bytes = max_size_mb * 1024 * 1024
@@ -120,7 +126,7 @@ class MeetingSummarizer:
             raise
     
     def transcribe_audio(self, audio_path):
-        """Transcribe audio using Whisper with librosa for audio loading"""
+        """Transcribe audio using Faster Whisper"""
         try:
             logger.info(f"Transcribing audio: {audio_path}")
             
@@ -134,17 +140,24 @@ class MeetingSummarizer:
             # Add a small delay to ensure file is fully written
             time.sleep(1)
             
-            # Load audio with librosa instead of Whisper's built-in loader
-            audio_array, sr = librosa.load(audio_path, sr=16000, mono=True)
+            # Transcribe using faster-whisper
+            segments, info = self.stt_model.transcribe(
+                audio_path,
+                language=None,  # Auto-detect language
+                task="transcribe"
+            )
             
-            # Pass the audio array directly to Whisper
-            result = self.stt_model.transcribe(audio_array)
-            transcript = result["text"].strip()
+            # Combine all segments into one transcript
+            transcript_parts = []
+            for segment in segments:
+                transcript_parts.append(segment.text)
+            
+            transcript = " ".join(transcript_parts).strip()
             
             if not transcript:
                 raise Exception("No speech detected in audio")
             
-            logger.info("Transcription completed successfully")
+            logger.info(f"Transcription completed successfully. Language: {info.language}")
             return transcript
             
         except Exception as e:

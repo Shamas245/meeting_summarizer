@@ -1,12 +1,13 @@
+# requirements.txt - Replace openai-whisper with faster-whisper
 streamlit==1.38.0
 langchain==0.3.0
 langchain-community==0.3.0
-openai-whisper==20231117
-python-dotenv==1.0.1
-requests==2.32.3
+faster-whisper==1.0.3
 google-generativeai==0.8.3
 moviepy==1.0.3
 python-docx==1.1.2
 librosa==0.10.2
 numpy==1.26.4
 imageio-ffmpeg==0.5.1
+python-dotenv==1.0.1
+requests==2.32.3
