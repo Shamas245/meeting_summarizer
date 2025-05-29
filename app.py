@@ -50,33 +50,33 @@ class MeetingSummarizer:
             st.error("❌ GEMINI_API_KEY not found in Streamlit secrets.")
             st.stop()
             
-        def initialize_models(self):
-            """Initialize ML models with error handling"""
-        # Initialize Faster Whisper model
-            try:
-               with st.spinner("Loading speech recognition model..."):
-                    # Use CPU and int8 for better compatibility on Streamlit Cloud
+    def initialize_models(self):
+        """Initialize ML models with error handling"""
+    # Initialize Faster Whisper model
+        try:
+            with st.spinner("Loading speech recognition model..."):
+                # Use CPU and int8 for better compatibility on Streamlit Cloud
                 self.stt_model = WhisperModel(
-                    WHISPER_MODEL, 
-                    device="cpu", 
-                    compute_type="int8",
-                    download_root=None  # Let it use default cache
-                    )
-                logger.info(f"Faster Whisper model '{WHISPER_MODEL}' loaded successfully")
-            except Exception as e:
-                st.error(f"❌ Failed to load Whisper model: {str(e)}")
-                logger.error(f"Whisper loading error: {e}")
-                st.stop()
+                WHISPER_MODEL, 
+                device="cpu", 
+                compute_type="int8",
+                download_root=None  # Let it use default cache
+                )
+            logger.info(f"Faster Whisper model '{WHISPER_MODEL}' loaded successfully")
+        except Exception as e:
+            st.error(f"❌ Failed to load Whisper model: {str(e)}")
+            logger.error(f"Whisper loading error: {e}")
+            st.stop()
 
-            # Initialize Gemini (keep this part the same)
-            try:
-               genai.configure(api_key=self.gemini_api_key)
-               self.gemini_model = genai.GenerativeModel(GEMINI_MODEL)
-               logger.info(f"Gemini model '{GEMINI_MODEL}' initialized successfully")
-            except Exception as e:
-               st.error(f"❌ Failed to initialize Gemini API: {str(e)}")
-               logger.error(f"Gemini init error: {e}")
-               st.stop()
+        # Initialize Gemini (keep this part the same)
+        try:
+            genai.configure(api_key=self.gemini_api_key)
+            self.gemini_model = genai.GenerativeModel(GEMINI_MODEL)
+            logger.info(f"Gemini model '{GEMINI_MODEL}' initialized successfully")
+        except Exception as e:
+            st.error(f"❌ Failed to initialize Gemini API: {str(e)}")
+            logger.error(f"Gemini init error: {e}")
+            st.stop()
                 
     def validate_file_size(self, file, max_size_mb=MAX_FILE_SIZE_MB):
         """Validate file size"""
