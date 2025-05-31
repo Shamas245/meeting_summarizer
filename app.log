@@ -276,3 +276,50 @@ To support symlinks on Windows, you either need to activate Developer Mode or to
 
 2025-05-29 13:02:47,095 - INFO - Faster Whisper model 'base' loaded successfully
 2025-05-29 13:02:47,099 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-29 13:13:20,141 - INFO - Faster Whisper model 'base' loaded successfully
+2025-05-29 13:13:20,141 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-29 13:13:26,973 - INFO - Faster Whisper model 'base' loaded successfully
+2025-05-29 13:13:26,973 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-29 13:13:27,000 - INFO - Processing video: C:\Users\Hp\AppData\Local\Temp\tmpk2hg7kgn.mp4
+2025-05-29 13:13:27,002 - ERROR - Audio extraction error: [WinError 2] The system cannot find the file specified
+2025-05-29 13:13:27,072 - ERROR - Processing error: Traceback (most recent call last):
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 354, in process_meeting
+    tmp_video_path, tmp_audio_path = summarizer.extract_audio_from_video(uploaded_file)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\meeting-summarizer\app.py", line 103, in extract_audio_from_video
+    video = VideoFileClip(tmp_video_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 257, in ffmpeg_parse_infos
+    proc = sp.Popen(cmd, **popen_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+2025-05-31 10:01:05,769 - INFO - Faster Whisper model 'base' loaded successfully
+2025-05-31 10:01:05,770 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-31 10:09:06,845 - INFO - Faster Whisper model 'base' loaded successfully
+2025-05-31 10:09:06,845 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-31 10:09:12,660 - INFO - Faster Whisper model 'base' loaded successfully
+2025-05-31 10:09:12,662 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
+2025-05-31 10:09:12,895 - INFO - Processing video: C:\Users\Hp\AppData\Local\Temp\tmp6xgsr60i.mp4
+2025-05-31 10:09:14,889 - INFO - Audio extracted successfully: C:\Users\Hp\AppData\Local\Temp\tmpo0k5yofr.wav
+2025-05-31 10:09:14,890 - INFO - Transcribing audio: C:\Users\Hp\AppData\Local\Temp\tmpo0k5yofr.wav
+2025-05-31 10:09:16,366 - INFO - Processing audio with duration 00:48.850
+2025-05-31 10:09:18,620 - INFO - Detected language 'en' with probability 0.97
+2025-05-31 10:09:23,603 - INFO - Transcription completed successfully. Language: en
+2025-05-31 10:09:23,610 - INFO - Generating summary for general meeting...
+2025-05-31 10:09:32,976 - INFO - Generating action items...
+2025-05-31 10:09:34,130 - INFO - Generated summary and 2 action items
+2025-05-31 10:09:34,333 - INFO - DOCX document created successfully
+2025-05-31 10:10:16,535 - INFO - Faster Whisper model 'base' loaded successfully
+2025-05-31 10:10:16,537 - INFO - Gemini model 'gemini-1.5-flash' initialized successfully
